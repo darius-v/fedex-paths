@@ -6,4 +6,8 @@
 
 `make start`
 
-Go to localhost:8000
+#Routes
+localhost:8000
+
+GET http://localhost:8000/1
+

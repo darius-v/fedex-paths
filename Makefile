@@ -6,8 +6,15 @@ export $(shell sed 's/=.*//' .env)
 start:
 	docker-compose up -d
 
+bash:
+    docker exec -it php_paths bash
+
 stop:
 	docker-compose stop
+
+# not tested
+clear-db:
+    docker-compose down -v
 
 init:
 	docker-compose build
