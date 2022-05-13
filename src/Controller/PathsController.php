@@ -30,35 +30,23 @@ class PathsController extends AbstractController
     public function show(ManagerRegistry $doctrine, string $id): Response
     {
 
+        /** @var Path $path */
+        $path = $doctrine->getRepository(Path::class)->findOneBy(['externalId' => $id]);
 
-//        $path = $doctrine->getRepository(Path::class)->find($id);
-//
-//        dump($path);
-//        dump($path->getReviews());
-
-        $reviews = $path = $doctrine->getRepository(Review::class)->findBy(['path' => $id]);
-//        dump($reviews);
-
-//        $product = $doctrine->getRepository(Product::class)->find($id);
-
-//        if (!$product) {
-//            throw $this->createNotFoundException(
-//                'No product found for id '.$id
-//            );
-//        }
-
-        $reviewsToReturn = [];
-        /** @var Review $review */
-        foreach ($reviews as $review) {
-            $reviewsToReturn[] = $review->getVote();
-        }
-
-
-
-        return new JsonResponse(['id' => $id, 'reviews' => $reviewsToReturn]);
+        return new JsonResponse([
+            'id' => $id,
+            'position' => [
+                'lat' => $path->getLat(),
+                'lng' => $path->getLon(),
+            ],
+            'title' => $path->getTitle(),
+            'options' => json_decode($path->getOptions(), true),
+            'distance' => json_decode($path->getDistance(), true),
+            'time' => json_decode($path->getTime(), true),
+        ]);
 
         // or render a template
         // in the template, print things with {{ product.name }}
-        // return $this->render('product/show.html.twig', ['product' => $product]);
+//         return $this->render('product/show.html.twig', ['product' => $product]);
     }
 }
