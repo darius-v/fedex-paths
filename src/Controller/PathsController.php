@@ -16,6 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class PathsController extends AbstractController
 
 {
+//    /**
+//     * @Route("/cors")
+//     */
+//    public function cors(ListData $listData): Response
+//    {
+//
+////        return $this->render('product/show.html.twig', ['product' => $product]);
+//    }
+
     /**
      * @Route("/")
      */
