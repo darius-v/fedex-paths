@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToMany;
 
 /**
@@ -25,9 +26,10 @@ class Path
     private $externalId;
 
     /**
-     * @OneToMany(targetEntity="Review", mappedBy="Path")
+     * @OneToMany(targetEntity="App\Entity\Review", mappedBy="App\Entity\Path")
      */
     private $reviews;
+
 
     /**
      * @return mixed

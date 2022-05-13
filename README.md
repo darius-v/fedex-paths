@@ -12,6 +12,10 @@ GET localhost:8000
 
 GET http://localhost:8000/1
 
+# Rum db migration:
+
+`docker-compose exec php php bin/console doctrine:migrations:migrate --no-interaction`
+
 # Connection to db:
 
 Host: localhost
@@ -21,7 +25,12 @@ Pass: notprod
 
 # Commands inside container:
 
-php bin/console make:migration
+`php bin/console make:migration`
+`bin/console doctrine:migrations:generate`
+`php bin/console doctrine:migrations:migrate`
+
+Revert last migration:
+`php bin/console doctrine:migrations:migrate prev`
 
 # Problem solutions:
 

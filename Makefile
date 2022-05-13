@@ -7,14 +7,19 @@ start:
 	docker-compose up -d
 
 bash:
-    docker exec -it php_paths bash
+	docker exec -it php_paths bash
 
 stop:
 	docker-compose stop
 
 # not tested
-clear-db:
-    docker-compose down -v
+# stop-clear-db:
+#     docker-compose down -v
+#migrate:
+#	docker-compose exec php php bin/console doctrine:migrations:migrate --no-interaction
+
+#migrate:
+#	docker-compose exec php php bin/console doctrine:migrations:migrate --no-interaction
 
 init:
 	docker-compose build
