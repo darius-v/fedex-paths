@@ -30,7 +30,8 @@ class PathsController extends AbstractController
      */
     public function list(ListData $listData): Response
     {
-        return new Response($listData->data2());
+//        return new Response($listData->data2());
+        return new Response($listData->data3());
     }
 
     /**
