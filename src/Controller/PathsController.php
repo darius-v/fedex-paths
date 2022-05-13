@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Path;
 use App\Entity\Review;
+use App\ListData;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,6 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class PathsController extends AbstractController
 
 {
+    /**
+     * @Route("/")
+     */
+    public function list(ListData $listData): Response
+    {
+        return new Response($listData->data());
+    }
+
     /**
      * @Route("/{id}")
      */
